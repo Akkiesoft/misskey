@@ -509,8 +509,80 @@ const SWEETS_MONOS: FrontendMonoDefinition[] = [{
 	spriteScale: 1,
 }];
 
+const KOWAII_MONOS: FrontendMonoDefinition[] = [{
+	id: '7c1207ee-b47c-11ee-ba6e-3387b84c0e1a',
+	sfxPitch: 0.25,
+	img: '/client-assets/drop-and-fusion/kowaii.webp',
+	imgSizeX: 163,
+	imgSizeY: 128,
+	spriteScale: 1.12,
+}, {
+	id: '7c7f3d64-b47c-11ee-b8b1-4b8eb5b84448',
+	sfxPitch: 0.5,
+	img: '/client-assets/drop-and-fusion/kowaii.webp',
+	imgSizeX: 163,
+	imgSizeY: 128,
+	spriteScale: 1.12,
+}, {
+	id: '7ce1887a-b47c-11ee-a61c-7f7ee759d41d',
+	sfxPitch: 0.75,
+	img: '/client-assets/drop-and-fusion/kowaii.webp',
+	imgSizeX: 163,
+	imgSizeY: 128,
+	spriteScale: 1.12,
+}, {
+	id: '7d136214-b47c-11ee-940f-33b0f23b2c2e',
+	sfxPitch: 1,
+	img: '/client-assets/drop-and-fusion/kowaii.webp',
+	imgSizeX: 163,
+	imgSizeY: 128,
+	spriteScale: 1.12,
+}, {
+	id: '7e323e36-b47c-11ee-8c9a-8f450987415c',
+	sfxPitch: 1.5,
+	img: '/client-assets/drop-and-fusion/kowaii.webp',
+	imgSizeX: 163,
+	imgSizeY: 128,
+	spriteScale: 1.12,
+}, {
+	id: '7e7206c4-b47c-11ee-95c2-1f38b70a8130',
+	sfxPitch: 2,
+	img: '/client-assets/drop-and-fusion/kowaii.webp',
+	imgSizeX: 163,
+	imgSizeY: 128,
+	spriteScale: 1.12,
+}, {
+	id: '7e957b40-b47c-11ee-9897-8bbbc46bf15f',
+	sfxPitch: 2.5,
+	img: '/client-assets/drop-and-fusion/kowaii.webp',
+	imgSizeX: 163,
+	imgSizeY: 128,
+	spriteScale: 1.12,
+}, {
+	id: '7eb93d3c-b47c-11ee-b25d-8bdda6db7353',
+	sfxPitch: 3,
+	img: '/client-assets/drop-and-fusion/kowaii.webp',
+	imgSizeX: 163,
+	imgSizeY: 128,
+	spriteScale: 1.12,
+}, {
+	id: '7edaeacc-b47c-11ee-9b68-3b8fe86a82f9',
+	sfxPitch: 3.5,
+	img: '/client-assets/drop-and-fusion/kowaii.webp',
+	imgSizeX: 163,
+	imgSizeY: 128,
+	spriteScale: 1.12,
+}, {
+	id: '7ef5b988-b47c-11ee-8502-8baaa7ed0038',
+	sfxPitch: 4,
+	img: '/client-assets/drop-and-fusion/kowaii.webp',
+	imgSizeX: 163,
+	imgSizeY: 128,
+	spriteScale: 1.12,
+}];
+
 const props = defineProps<{
-	gameMode: 'normal' | 'square' | 'yen' | 'sweets' | 'space';
+	gameMode: 'normal' | 'square' | 'yen' | 'sweets' | 'space' | 'kowaii';
 	mute: boolean;
 }>();
 
@@ -524,6 +596,7 @@ const monoDefinitions = computed(() => {
 		props.gameMode === 'yen' ? YEN_MONOS :
 		props.gameMode === 'sweets' ? SWEETS_MONOS :
 		props.gameMode === 'space' ? NORAML_MONOS :
+		props.gameMode === 'kowaii' ? KOWAII_MONOS :
 		[] as never;
 });
 
@@ -532,6 +605,7 @@ function getScoreUnit(gameMode: string) {
 		gameMode === 'square' ? 'pt' :
 		gameMode === 'yen' ? '円' :
 		gameMode === 'sweets' ? 'kcal' :
+		gameMode === 'kowaii' ? 'Kowaii' :
 		'' as never;
 }
 
