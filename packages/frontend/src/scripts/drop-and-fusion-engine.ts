@@ -977,6 +977,90 @@ const SWEETS_MONOS: Mono[] = [{
 	dropCandidate: true,
 }];
 
+const KOWAII_BASE_SIZE = 28;
+const KOWAII_BASE_SIZE_Y = 22;
+const KOWAII_MONOS: Mono[] = [{
+	id: '7c1207ee-b47c-11ee-ba6e-3387b84c0e1a',
+	level: 10,
+	sizeX: KOWAII_BASE_SIZE * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25,
+	sizeY: KOWAII_BASE_SIZE_Y * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25,
+	shape: 'circle',
+	score: 512,
+	dropCandidate: false,
+}, {
+	id: '7c7f3d64-b47c-11ee-b8b1-4b8eb5b84448',
+	level: 9,
+	sizeX: KOWAII_BASE_SIZE * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25,
+	sizeY: KOWAII_BASE_SIZE_Y * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25,
+	shape: 'circle',
+	score: 256,
+	dropCandidate: false,
+}, {
+	id: '7ce1887a-b47c-11ee-a61c-7f7ee759d41d',
+	level: 8,
+	sizeX: KOWAII_BASE_SIZE * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25,
+	sizeY: KOWAII_BASE_SIZE_Y * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25,
+	shape: 'circle',
+	score: 128,
+	dropCandidate: false,
+}, {
+	id: '7d136214-b47c-11ee-940f-33b0f23b2c2e',
+	level: 7,
+	sizeX: KOWAII_BASE_SIZE * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25,
+	sizeY: KOWAII_BASE_SIZE_Y * 1.25 * 1.25 * 1.25 * 1.25 * 1.25 * 1.25,
+	shape: 'circle',
+	score: 64,
+	dropCandidate: false,
+}, {
+	id: '7e323e36-b47c-11ee-8c9a-8f450987415c',
+	level: 6,
+	sizeX: KOWAII_BASE_SIZE * 1.25 * 1.25 * 1.25 * 1.25 * 1.25,
+	sizeY: KOWAII_BASE_SIZE_Y * 1.25 * 1.25 * 1.25 * 1.25 * 1.25,
+	shape: 'circle',
+	score: 32,
+	dropCandidate: false,
+}, {
+	id: '7e7206c4-b47c-11ee-95c2-1f38b70a8130',
+	level: 5,
+	sizeX: KOWAII_BASE_SIZE * 1.25 * 1.25 * 1.25 * 1.25,
+	sizeY: KOWAII_BASE_SIZE_Y * 1.25 * 1.25 * 1.25 * 1.25,
+	shape: 'circle',
+	score: 16,
+	dropCandidate: true,
+}, {
+	id: '7e957b40-b47c-11ee-9897-8bbbc46bf15f',
+	level: 4,
+	sizeX: KOWAII_BASE_SIZE * 1.25 * 1.25 * 1.25,
+	sizeY: KOWAII_BASE_SIZE_Y * 1.25 * 1.25 * 1.25,
+	shape: 'circle',
+	score: 8,
+	dropCandidate: true,
+}, {
+	id: '7eb93d3c-b47c-11ee-b25d-8bdda6db7353',
+	level: 3,
+	sizeX: KOWAII_BASE_SIZE * 1.25 * 1.25,
+	sizeY: KOWAII_BASE_SIZE_Y * 1.25 * 1.25,
+	shape: 'circle',
+	score: 4,
+	dropCandidate: true,
+}, {
+	id: '7edaeacc-b47c-11ee-9b68-3b8fe86a82f9',
+	level: 2,
+	sizeX: KOWAII_BASE_SIZE * 1.25,
+	sizeY: KOWAII_BASE_SIZE_Y * 1.25,
+	shape: 'circle',
+	score: 2,
+	dropCandidate: true,
+}, {
+	id: '7ef5b988-b47c-11ee-8502-8baaa7ed0038',
+	level: 1,
+	sizeX: KOWAII_BASE_SIZE,
+	sizeY: KOWAII_BASE_SIZE_Y,
+	shape: 'circle',
+	score: 1,
+	dropCandidate: true,
+}];
+
 export class DropAndFusionGame extends EventEmitter<{
 	changeScore: (newScore: number) => void;
 	changeCombo: (newCombo: number) => void;
@@ -1003,7 +1087,7 @@ export class DropAndFusionGame extends EventEmitter<{
 	private tickCallbackQueue: { frame: number; callback: () => void; }[] = [];
 	private overflowCollider: Matter.Body;
 	private isGameOver = false;
-	private gameMode: 'normal' | 'yen' | 'square' | 'sweets';
+	private gameMode: 'normal' | 'yen' | 'square' | 'sweets' | 'kowaii';
 	private rng: () => number;
 	private logs: Log[] = [];
 
@@ -1031,6 +1115,7 @@ export class DropAndFusionGame extends EventEmitter<{
 			case 'yen': return YEN_MONOS;
 			case 'square': return SQUARE_MONOS;
 			case 'sweets': return SWEETS_MONOS;
+			case 'kowaii': return KOWAII_MONOS;
 		}
 	}
 
